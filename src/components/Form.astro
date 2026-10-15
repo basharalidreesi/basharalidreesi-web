@@ -51,7 +51,8 @@ const strippedSite = Astro.site?.toString()?.replace(/^(https?:\/\/)?(www\.)?/i,
         padding: var(--_field-padding);
         border: 1px solid var(--form-field-outline-colour);
         border-radius: 6px;
-        color: var(--text-input-colour);
+        color: var(--form-field-input-colour);
+        background-color: var(--form-field-background-colour);
     }
     textarea {
         --_min-lines: 5;

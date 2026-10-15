@@ -14,15 +14,25 @@
     // text
     --text-default-colour: #000;
     --text-link-hover-colour: #808080;
-    --text-input-colour: #0000ff;
     // lines
     --separator-default-colour: #d3d3d3;
+    // form fields
+    --form-field-background-colour: #fff;
     --form-field-outline-colour: #b7b7b7;
+    --form-field-input-colour: #0000ff;
     // windowed content
     --windowed-content-background-colour: #fff;
     --windowed-content-backdrop-colour: #000;
     --windowed-content-backdrop-opacity: 0.22;
     --windowed-content-outline-colour: #707070;
+    @media (prefers-color-scheme: dark) {
+        --page-background-colour: #111;
+        --text-default-colour: #fff;
+        --form-field-background-colour: #111;
+        --form-field-input-colour: #ffff00;
+        --windowed-content-background-colour: #111;
+        --windowed-content-backdrop-colour: #fff;
+    }
 }
 :root {
     // page
