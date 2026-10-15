@@ -24,7 +24,7 @@ const strippedSite = Astro.site?.toString()?.replace(/^(https?:\/\/)?(www\.)?/i,
             <label for='form_message'>
                 Message
             </label>
-            <textarea name='message' id='form_message' rows='5' required></textarea>
+            <textarea name='message' id='form_message' required></textarea>
         </div>
     </div>
     <button type='submit'>Submit</button>
@@ -54,8 +54,10 @@ const strippedSite = Astro.site?.toString()?.replace(/^(https?:\/\/)?(www\.)?/i,
         color: var(--text-input-colour);
     }
     textarea {
+        --_min-lines: 5;
         resize: vertical;
-        min-height: calc((1em * var(--_lh)) + (var(--_field-padding) * 2) + 2px);
+        field-sizing: content;
+        min-height: calc((1em * var(--_lh) * var(--_min-lines)) + (var(--_field-padding) * 2) + 2px);
     }
     button {
         display: block;
