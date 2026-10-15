@@ -40,7 +40,7 @@
     --page-padding-top: var(--page-padding);
     --page-padding-bottom: var(--page-padding);
     --page-padding-inline: calc(env(safe-area-inset-left, 0px) + var(--page-padding));
-    --page-max-width: calc(500px + var(--page-padding-inline));
+    --page-max-width: 500px;
     // windowed content
     --windowed-content-max-width: 360px;
     // content & misc

@@ -86,35 +86,37 @@ const resolvedAnalytics = analytics ?? SITE_ANALYTICS;
         <meta name='generator' content={Astro.generator} />
     </head>
     <body>
-        <header>
-            <h1>
-                {resolvedSiteTitle}
-            </h1>
-            {resolvedTaglines && resolvedTaglines.length > 0 && (
-                <div class='taglines'>
-                    {resolvedTaglines.map((tagline) => (
-                        <p>
-                            {tagline}
-                        </p>
-                    ))}
-                </div>
-            )}
-        </header>
-        <main>
-            <slot />
-        </main>
-        <footer>
-            <h2>
-                Contact
-            </h2>
-            <p>
-                {SITE_CONTACT}
-            </p>
-            <p>
-                Alternatively, use the form below to get in touch.
-            </p>
-            <Form />
-        </footer>
+        <div class='wrapper'>
+            <header>
+                <h1>
+                    {resolvedSiteTitle}
+                </h1>
+                {resolvedTaglines && resolvedTaglines.length > 0 && (
+                    <div class='taglines'>
+                        {resolvedTaglines.map((tagline) => (
+                            <p>
+                                {tagline}
+                            </p>
+                        ))}
+                    </div>
+                )}
+            </header>
+            <main>
+                <slot />
+            </main>
+            <footer>
+                <h2>
+                    Contact
+                </h2>
+                <p>
+                    {SITE_CONTACT}
+                </p>
+                <p>
+                    Alternatively, use the form below to get in touch.
+                </p>
+                <Form />
+            </footer>
+        </div>
     </body>
 </html>
 
@@ -123,15 +125,19 @@ const resolvedAnalytics = analytics ?? SITE_ANALYTICS;
         --_padding-block-multiplier: 3;
         display: flex;
         flex-direction: column;
-        max-width: var(--page-max-width);
-        row-gap: var(--content-large-gap);
         padding-block: calc(var(--page-padding-top) * var(--_padding-block-multiplier));
         padding-inline: var(--page-padding-inline);
         background-color: var(--page-background-colour);
-        margin-inline: auto;
         @media (max-width: 768px) {
             --_padding-block-multiplier: 1;
         }
+    }
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        max-width: var(--page-max-width);
+        row-gap: var(--content-large-gap);
+        margin: auto;
     }
     header,
     footer {
