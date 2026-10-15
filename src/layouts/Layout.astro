@@ -1,0 +1,160 @@
+---
+import { SITE_ANALYTICS, SITE_CONTACT, SITE_DESCRIPTION, SITE_KEYWORDS, SITE_LANG, SITE_TAGLINES, SITE_TITLE } from '../lib/config.ts';
+import Form from '../components/Form.astro';
+import '../styles/reset.css';
+import '../styles/global.scss';
+
+type Props = {
+    lang?: string | undefined;
+    title?: string | undefined;
+    description?: string | undefined;
+    keywords?: Array<string> | undefined;
+    // image
+    canonical?: string | undefined;
+    analytics?: string | undefined;
+    noindex?: boolean | undefined;
+    nofollow?: boolean | undefined;
+    overflow?: 'hidden' | undefined;
+};
+
+const {
+    lang,
+    title,
+    description,
+    keywords,
+    // image,
+    analytics,
+    canonical,
+    noindex = false,
+    nofollow = false,
+    overflow,
+} = Astro.props;
+
+const resolvedLang = lang ?? SITE_LANG;
+const resolvedSiteTitle = SITE_TITLE;
+const resolvedTitle = [title, resolvedSiteTitle]?.filter(Boolean)?.join(' · ');
+const resolvedTaglines = SITE_TAGLINES?.filter(Boolean);;
+const resolvedDescription = description ?? SITE_DESCRIPTION;
+const resolvedKeywords = SITE_KEYWORDS?.concat(keywords ?? [])?.filter(Boolean)?.join(', ');
+// const resolvedImage = ;
+const resolvedCanonical = canonical ?? new URL(Astro.url.pathname, Astro.site);
+const resolvedAnalytics = analytics ?? SITE_ANALYTICS;
+---
+
+<html lang={resolvedLang} style={overflow === 'hidden' ? 'overflow: hidden;' : null}>
+    <head>
+        <meta charset='utf-8' />
+        {resolvedTitle && (
+            <title>{resolvedTitle}</title>
+        )}
+        {(title || resolvedSiteTitle) && (
+            <meta property='og:site_name' content={resolvedSiteTitle} />
+            <meta property='og:title' content={title || resolvedSiteTitle} />
+            <meta name='twitter:title' content={title || resolvedSiteTitle} />
+        )}
+        {resolvedDescription && (
+            <meta name='description' content={resolvedDescription} />
+            <meta property='og:description' content={resolvedDescription} />
+            <meta name='twitter:description' content={resolvedDescription} />
+        )}
+        {resolvedKeywords && (
+            <meta name='keywords' content={resolvedKeywords} />
+        )}
+        <!-- {resolvedImage && (
+            <meta property='og:image' content={resolvedImage} />
+            <meta name='twitter:image' content={resolvedImage} />
+        )} -->
+        {resolvedCanonical && (
+            <link rel='canonical' href={resolvedCanonical} />
+            <meta property='og:url' content={resolvedCanonical} />
+            <meta name='twitter:url' content={resolvedCanonical} />
+        )}
+        <meta property='og:type' content='website' />
+        <meta name='twitter:card' content='summary_large_image' />
+        <meta name='viewport' content='width=device-width,initial-scale=1.0,viewport-fit=cover' />
+        <meta name='robots' content='max-snippet:-1,max-image-preview:large,max-video-preview:-1' />
+        {(noindex || nofollow) && (
+            <meta name='robots' content={[noindex ? 'noindex' : null, nofollow ? 'nofollow' : null]?.filter(Boolean)?.join(', ')} />
+        )}
+        <link rel='sitemap' href='/sitemap-index.xml' />
+        <link rel="preconnect" href='https://fonts.googleapis.com' />
+        <link rel="preconnect" href='https://fonts.gstatic.com' crossorigin />
+        <link href='https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap' rel='stylesheet' />
+        {resolvedAnalytics && (
+            <Fragment set:html={resolvedAnalytics} />
+        )}
+        <meta name='generator' content={Astro.generator} />
+    </head>
+    <body>
+        <header>
+            <h1>
+                {resolvedSiteTitle}
+            </h1>
+            {resolvedTaglines && resolvedTaglines.length > 0 && (
+                <div class='taglines'>
+                    {resolvedTaglines.map((tagline) => (
+                        <p>
+                            {tagline}
+                        </p>
+                    ))}
+                </div>
+            )}
+        </header>
+        <main>
+            <slot />
+        </main>
+        <footer>
+            <h2>
+                Contact
+            </h2>
+            <p>
+                {SITE_CONTACT}
+            </p>
+            <p>
+                Alternatively, use the form below to get in touch.
+            </p>
+            <Form />
+        </footer>
+    </body>
+</html>
+
+<style lang='scss'>
+    body {
+        --_padding-block-multiplier: 3;
+        display: flex;
+        flex-direction: column;
+        max-width: var(--page-max-width);
+        row-gap: var(--content-large-gap);
+        padding-block: calc(var(--page-padding-top) * var(--_padding-block-multiplier));
+        padding-inline: var(--page-padding-inline);
+        background-color: var(--page-background-colour);
+        margin-inline: auto;
+        @media (max-width: 768px) {
+            --_padding-block-multiplier: 1;
+        }
+    }
+    header,
+    footer {
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--content-medium-gap);
+    }
+    header {
+        margin-block-start: auto;
+    }
+    footer {
+        padding-block-start: var(--content-large-gap);
+        border-block-start: 1px solid var(--separator-default-colour);
+        margin-block-end: auto;
+    }
+    .taglines {
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--content-small-gap);
+    }
+    h1,
+    h2 {
+        font-weight: bold;
+        letter-spacing: 5%;
+    }
+</style>

@@ -1,0 +1,80 @@
+---
+const strippedSite = Astro.site?.toString()?.replace(/^(https?:\/\/)?(www\.)?/i, '')?.replace(/(\.html|\/|\?.*)$/i, '');
+---
+
+<form action='https://api.web3forms.com/submit' method='POST' onkeydown='if(event.key === "Enter" && event.target.tagName !== "TEXTAREA") event.preventDefault();'>
+    <input type='hidden' name='access_key' value='b3910d0e-cc3a-4fbc-868e-11a42b808e31'>
+    <input type='hidden' name='from_name' value={strippedSite}>
+    <input type='hidden' name='subject' value=`New contact form submission`>
+    <input type='hidden' name='redirect' value={new URL('success', Astro.site)?.toString()}>
+    <div class='field-wrapper'>
+        <div class='field'>
+            <label for='form_name'>
+                Name
+            </label>
+            <input type='text' name='name' id='form_name' required />
+        </div>
+        <div class='field'>
+            <label for='form_email'>
+                Email
+            </label>
+            <input type='email' name='email' id='form_email' required />
+        </div>
+        <div class='field'>
+            <label for='form_message'>
+                Message
+            </label>
+            <textarea name='message' id='form_message' rows='5' required></textarea>
+        </div>
+    </div>
+    <button type='submit'>Submit</button>
+</form>
+
+<style lang='scss'>
+    form {
+        --_lh: var(--line-height);
+        --_field-padding: 0.333rem;
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--content-medium-gap);
+    }
+    .field-wrapper,
+    .field {
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--content-small-gap);
+    }
+    input,
+    textarea {
+        appearance: none;
+        display: block;
+        padding: var(--_field-padding);
+        border: 1px solid var(--form-field-outline-colour);
+        color: var(--text-input-colour);
+    }
+    textarea {
+        resize: vertical;
+        min-height: calc((1em * var(--_lh)) + (var(--_field-padding) * 2) + 2px);
+    }
+    button {
+        display: block;
+        width: max-content;
+        max-width: 100%;
+        padding-block: var(--content-small-gap);
+        padding-inline-start: var(--content-small-gap);
+        margin-inline-start: auto;
+        text-box: trim-both cap alphabetic;
+        cursor: pointer;
+        &::after {
+            content: ' »»»';
+        }
+        @media (any-hover: hover) {
+            &:hover {
+                color: var(--text-link-hover-colour);
+            }
+        }
+    }
+    label {
+        font-variant: all-small-caps;
+    }
+</style>

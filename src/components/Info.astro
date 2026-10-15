@@ -1,0 +1,30 @@
+---
+import { HOME_DESCRIPTIONS } from '../lib/config';
+
+const resolvedDescriptions = HOME_DESCRIPTIONS?.filter(Boolean);
+---
+
+<div class='wrapper'>
+    {resolvedDescriptions && resolvedDescriptions.length > 0 && (
+        <div class='description'>
+            {resolvedDescriptions.map((description) => (
+                <p>
+                    {description}
+                </p>
+            ))}
+        </div>
+    )}
+</div>
+
+<style lang='scss'>
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--content-medium-gap);
+    }
+    .description {
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--content-small-gap);
+    }
+</style>

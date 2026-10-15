@@ -1,0 +1,76 @@
+---
+import Info from '../components/Info.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout noindex={true} nofollow={true} overflow='hidden'>
+    <Info />
+    <div class='wrapper'>
+        <div class='card'>
+            <h2>
+                Form submitted successfully!
+            </h2>
+            <p>
+                Thank you! The form has been submitted successfully. I will reply to you soon.
+            </p>
+            <a href='/'>
+                <span>
+                    Go back
+                </span>
+            </a>
+        </div>
+    </div>
+</Layout>
+
+<style lang='scss'>
+    .wrapper {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+    }
+    .card {
+        --_card-padding: var(--content-large-gap);
+        --_link-padding: var(--content-small-gap);
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--content-medium-gap);
+        padding: var(--_card-padding);
+        padding-block-end: calc(var(--_card-padding) - var(--_link-padding));
+        margin-inline: var(--page-padding-inline);
+        max-width: var(--windowed-content-max-width);
+        background: var(--windowed-content-background-colour);
+        outline: 1px solid var(--windowed-content-outline-colour);
+    }
+    h2 {
+        font-weight: bold;
+        letter-spacing: 5%;
+    }
+    a {
+        margin-inline-start: auto;
+        &::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-color: var(--windowed-content-backdrop-colour);
+            opacity: var(--windowed-content-backdrop-opacity);
+            z-index: -1;
+        }
+        span {
+            display: block;
+            padding-block: var(--_link-padding);
+            padding-inline-start: var(--_link-padding);
+            text-box: trim-both cap alphabetic;
+            &::before {
+                content: '««« ';
+            }
+            @media (any-hover: hover) {
+                &:hover {
+                    color: var(--text-link-hover-colour);
+                }
+            }
+        }
+    }
+</style>

@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+:root {
+    // text
+    --font-size: 16px;
+    --font-family: 'Courier Prime', 'Courier', 'Courier New', monospace;
+    --font-weight: 300;
+    --font-style: normal;
+    --line-height: 1.2;
+}
+:root {
+    // page
+    --page-background-colour: #fff;
+    // text
+    --text-default-colour: #000;
+    --text-link-hover-colour: #808080;
+    --text-input-colour: #0000ff;
+    // lines
+    --separator-default-colour: #d3d3d3;
+    --form-field-outline-colour: #b7b7b7;
+    // windowed content
+    --windowed-content-background-colour: #fff;
+    --windowed-content-backdrop-colour: #000;
+    --windowed-content-backdrop-opacity: 0.22;
+    --windowed-content-outline-colour: #707070;
+}
+:root {
+    // page
+    --page-padding: 2rem;
+    --page-padding-top: var(--page-padding);
+    --page-padding-bottom: var(--page-padding);
+    --page-padding-inline: calc(env(safe-area-inset-left, 0px) + var(--page-padding));
+    --page-max-width: calc(500px + var(--page-padding-inline));
+    // windowed content
+    --windowed-content-max-width: 360px;
+    // content & misc
+    --content-small-gap: 0.5rem;
+    --content-medium-gap: 1rem;
+    --content-large-gap: 2rem;
+}
