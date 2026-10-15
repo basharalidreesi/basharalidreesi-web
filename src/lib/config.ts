@@ -15,7 +15,7 @@ export const SITE_KEYWORDS = [
     'amet',
 ];
 
-export const SITE_ANALYTICS = '<!-- analytics script -->';
+export const SITE_ANALYTICS = `<script data-goatcounter='https://basharalidreesi.goatcounter.com/count' async src='//gc.zgo.at/count.js'></script>`;
 
 export const SITE_CONTACT = 'You can reach me at contact@basharalidreesi.com';
 
