@@ -5,7 +5,7 @@ const strippedSite = Astro.site?.toString()?.replace(/^(https?:\/\/)?(www\.)?/i,
 <form action='https://api.web3forms.com/submit' method='POST' onkeydown='if(event.key === "Enter" && event.target.tagName !== "TEXTAREA") event.preventDefault();'>
     <input type='hidden' name='access_key' value='b3910d0e-cc3a-4fbc-868e-11a42b808e31'>
     <input type='hidden' name='from_name' value={strippedSite}>
-    <input type='hidden' name='subject' value=`New contact form submission`>
+    <input type='hidden' name='subject' value='New contact form submission'>
     <input type='hidden' name='redirect' value={new URL('success', Astro.site)?.toString()}>
     <div class='field-wrapper'>
         <div class='field'>
