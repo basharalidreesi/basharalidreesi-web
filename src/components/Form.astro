@@ -12,19 +12,19 @@ const strippedSite = Astro.site?.toString()?.replace(/^(https?:\/\/)?(www\.)?/i,
             <label for='form_name'>
                 Name
             </label>
-            <input type='text' name='name' id='form_name' required />
+            <input type='text' name='name' id='form_name' required dir='auto' />
         </div>
         <div class='field'>
             <label for='form_email'>
                 Email
             </label>
-            <input type='email' name='email' id='form_email' required />
+            <input type='email' name='email' id='form_email' required dir='auto' />
         </div>
         <div class='field'>
             <label for='form_message'>
                 Message
             </label>
-            <textarea name='message' id='form_message' required></textarea>
+            <textarea name='message' id='form_message' required dir='auto'></textarea>
         </div>
     </div>
     <button type='submit'>Submit</button>
