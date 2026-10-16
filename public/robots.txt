@@ -1,0 +1,52 @@
+
+# Block AI training crawlers
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: MistralAI-Training
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+# Keep AI search access
+User-agent: OAI-SearchBot
+Disallow: /success/
+Allow: /
+
+User-agent: Claude-SearchBot
+Disallow: /success/
+Allow: /
+
+User-agent: PerplexityBot
+Disallow: /success/
+Allow: /
+
+User-agent: Meta-WebIndexer
+Disallow: /success/
+Allow: /
+
+User-agent: Amzn-SearchBot
+Disallow: /success/
+Allow: /
+
+User-agent: MistralAI-Index
+Disallow: /success/
+Allow: /
+
+# Allow normal search engine crawling
+User-agent: *
+Disallow: /success/
+Allow: /
