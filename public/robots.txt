@@ -23,30 +23,23 @@ Disallow: /
 
 # Keep AI search access
 User-agent: OAI-SearchBot
-Disallow: /success/
 Allow: /
 
 User-agent: Claude-SearchBot
-Disallow: /success/
 Allow: /
 
 User-agent: PerplexityBot
-Disallow: /success/
 Allow: /
 
 User-agent: Meta-WebIndexer
-Disallow: /success/
 Allow: /
 
 User-agent: Amzn-SearchBot
-Disallow: /success/
 Allow: /
 
 User-agent: MistralAI-Index
-Disallow: /success/
 Allow: /
 
 # Allow normal search engine crawling
 User-agent: *
-Disallow: /success/
 Allow: /
