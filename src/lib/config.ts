@@ -20,5 +20,5 @@ export const SITE_ANALYTICS = `<script data-goatcounter='https://basharalidreesi
 export const SITE_CONTACT = 'You can reach me at contact@basharalidreesi.com';
 
 export const HOME_DESCRIPTIONS = [
-    'I am an architect and art historian with research interests in the material culture of the early Islamic caliphal courts and the art and architecture of medieval Islamic societies.',
+    'I am an architect and art historian with research interests in the material culture of the early Islamic caliphal courts (ca. 650–1250) and the art and architecture of medieval Islamic societies.',
 ];
